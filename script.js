@@ -40,12 +40,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const tr = document.createElement('tr');
 
             const fieldsToDisplay = [
-                { field: 'Job Name', value: jobName },
+                { field: 'VanirOffice', value: branch },
                 { field: 'Customer', value: customer },
+                { field: 'Job Name', value: jobName },
                 { field: 'FieldManager', value: fieldManager },
-                { field: 'Materials Needed', value: materialsNeeded, editable: true },
                 { field: 'Status', value: status },
-                { field: 'VanirOffice', value: branch }
+                { field: 'Materials Needed', value: materialsNeeded, editable: true },
+
+                
             ];
 
             fieldsToDisplay.forEach(({ field, value, editable = false }) => {
