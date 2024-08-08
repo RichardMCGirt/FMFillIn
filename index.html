@@ -7,33 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo">
-        <h1>Pending Fill Ins</h1>
+    <!-- Loading Container -->
+    <div id="loading-container">
+        <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo loading-logo">
+        <p id="loading-text">Loading...</p>
     </div>
-    <input type="text" id="search-input" placeholder="Search...">
-    <table id="airtable-data">
-        <thead>
-            <tr>
-                
-                <th>Branch</th>
-                <th>Customer</th>
-                <th>Job Name</th>
-                <th>Field Manager</th>
-                
-                <th>Status</th>
-                
-                <th>Materials Needed</th>
-            </tr>
-        </thead>
-        <div id="loading-overlay"></div>
-<div id="loading-indicator">Loading, please wait...</div>
 
-        <tbody>
-            <!-- Data will be injected here by JavaScript -->
-        </tbody>
-    </table>
-    <button id="submit-button">Submit Changes</button>
+    <!-- Main Content -->
+    <div id="main-content">
+        <div class="header">
+            <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo">
+            <h1>Pending Fill Ins</h1>
+        </div>
+        <input type="text" id="search-input" placeholder="Search...">
+        <table id="airtable-data">
+            <thead>
+                <tr>
+                    <th>Branch</th>
+                    <th>Customer</th>
+                    <th>Job Name</th>
+                    <th>Field Manager</th>
+                    <th>Status</th>
+                    <th>Materials Needed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be injected here by JavaScript -->
+            </tbody>
+        </table>
+        <button id="submit-button">Submit Changes</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
