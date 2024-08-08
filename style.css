@@ -144,3 +144,9 @@ td:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+#submit-button {
+    position: sticky;
+    bottom: 10px;
+    margin-bottom: 10px;
+}
