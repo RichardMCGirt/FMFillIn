@@ -87,7 +87,7 @@ tr:hover {
 
 td[contenteditable="true"] {
     background-color: grey;
-    cursor: pointer;
+    cursor: crosshair;
     color: white;
     width: fit-content;
 }
