@@ -7,28 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Container -->
-    <div id="loading-container">
-        <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo loading-logo">
-        <p id="loading-text">Loading...</p>
+    <div class="header">
+        <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo">
+        <h1>Pending Fill Ins</h1>
     </div>
-
-    <!-- Main Content -->
-    <div id="main-content">
-        <div class="header">
-            <img src="VANIR-transparent (1).png" alt="Vanir Installed Sales Logo" class="logo">
-            <h1>Pending Fill Ins</h1>
-        </div>
-        <input type="text" id="search-input" placeholder="Search...">
+    <div id="loading-container" style="display: none;">
+        <img src="VANIR-transparent (1).png" alt="Loading..." class="loading-logo">
+        <p>Loading...</p>
+    </div>
+    <div id="main-content" style="display: none;">
+        <input type="text" id="search-input" placeholder="Search..." />
         <table id="airtable-data">
             <thead>
                 <tr>
-                    <th>Branch</th>
-                    <th>Customer</th>
                     <th>Job Name</th>
+                    <th>Customer</th>
                     <th>Field Manager</th>
-                    <th>Status</th>
                     <th>Materials Needed</th>
+                    <th>Status</th>
+                    <th>Branch</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +34,7 @@
         </table>
         <button id="submit-button">Submit Changes</button>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
