@@ -39,15 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const tr = document.createElement('tr');
             tr.innerHTML = `
-             <td data-id="${record.id}" data-field="VanirOffice">${branch}</td>
-                             <td data-id="${record.id}" data-field="Customer">${customer}</td>
-
+                <td data-id="${record.id}" data-field="VanirOffice">${branch}</td>
+                <td data-id="${record.id}" data-field="Customer">${customer}</td>
                 <td data-id="${record.id}" data-field="Job Name">${jobName}</td>
                 <td data-id="${record.id}" data-field="FieldManager">${fieldManager}</td>
                 <td data-id="${record.id}" data-field="Status">${status}</td>
-                                <td contenteditable="true" data-id="${record.id}" data-field="Materials Needed">${materialsNeeded}</td>
-
-               
+                <td class="materials-needed-column" contenteditable="true" data-id="${record.id}" data-field="Materials Needed">${materialsNeeded}</td>
             `;
 
             tbody.appendChild(tr);
@@ -63,18 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function fetchAllData() {
+        // Show the loading indicator and overlay
         document.getElementById('loading-indicator').style.display = 'block';
+        document.getElementById('loading-overlay').style.display = 'block';
         document.getElementById('airtable-data').style.display = 'none';
         document.getElementById('submit-button').style.display = 'none';
+        
         let allRecords = [];
         let offset = null;
-
+    
         do {
             const data = await fetchData(offset);
             allRecords = allRecords.concat(data.records);
             offset = data.offset;
         } while (offset);
-
+    
         // Sort records alphabetically by Branch
         allRecords.sort((a, b) => {
             const branchA = (a.fields['VanirOffice'] || '').toLowerCase();
@@ -83,12 +83,16 @@ document.addEventListener('DOMContentLoaded', function () {
             if (branchA > branchB) return 1;
             return 0;
         });
-
+    
         displayData(allRecords);
+        
+        // Hide the loading indicator and overlay once data is loaded
         document.getElementById('loading-indicator').style.display = 'none';
+        document.getElementById('loading-overlay').style.display = 'none';
         document.getElementById('airtable-data').style.display = 'table';
         document.getElementById('submit-button').style.display = 'block';
     }
+    
 
     async function updateRecord(id, fields) {
         const url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}/${id}`;

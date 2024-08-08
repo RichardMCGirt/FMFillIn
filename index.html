@@ -12,7 +12,6 @@
         <h1>Pending Fill Ins</h1>
     </div>
     <input type="text" id="search-input" placeholder="Search...">
-    <div id="loading-indicator">Loading...</div>
     <table id="airtable-data">
         <thead>
             <tr>
@@ -27,6 +26,9 @@
                 <th>Materials Needed</th>
             </tr>
         </thead>
+        <div id="loading-overlay"></div>
+<div id="loading-indicator">Loading, please wait...</div>
+
         <tbody>
             <!-- Data will be injected here by JavaScript -->
         </tbody>
