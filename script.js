@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const airtableBaseId = 'appeNSp44fJ8QYeY5';
     const airtableTableName = 'tblRp5bukUiw9tX9j';
 
+    const loadingLogo = document.querySelector('.loading-logo');
+    const loadingContainer = document.getElementById('loading-container');
+    const mainContent = document.getElementById('main-content');
+
+    // Apply the full-color class after a delay to simulate a loading bar
+    setTimeout(() => {
+        loadingLogo.classList.add('full-color');
+    }, 2); // 500ms delay
+
     async function fetchData(offset = null) {
         let url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}?filterByFormula=Status='Pending'`;
         if (offset) {
@@ -46,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 { field: 'FieldManager', value: fieldManager },
                 { field: 'Status', value: status },
                 { field: 'Materials Needed', value: materialsNeeded, editable: true },
-
-                
             ];
 
             fieldsToDisplay.forEach(({ field, value, editable = false }) => {
@@ -71,9 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function fetchAllData() {
-        const loadingContainer = document.getElementById('loading-container');
-        const mainContent = document.getElementById('main-content');
-
         if (loadingContainer && mainContent) {
             loadingContainer.style.display = 'flex';
             mainContent.style.display = 'none';
@@ -127,22 +131,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('submit-button').addEventListener('click', async () => {
-        const confirmSubmit = confirm('Are you sure you want to submit the changes?');
-        if (!confirmSubmit) {
-            return;
-        }
-
-        const loadingContainer = document.getElementById('loading-container');
-        const airtableData = document.getElementById('airtable-data');
-        const submitButton = document.getElementById('submit-button');
-
-        if (loadingContainer && airtableData && submitButton) {
+        if (loadingContainer && mainContent) {
             loadingContainer.style.display = 'block';
-            airtableData.style.display = 'none';
-            submitButton.style.display = 'none';
+            mainContent.style.display = 'none';
         }
 
-        const tbody = airtableData.querySelector('tbody');
+        const tbody = document.getElementById('airtable-data').querySelector('tbody');
         const rows = tbody.querySelectorAll('tr');
         for (const row of rows) {
             const materialsNeededCell = row.querySelector('[contenteditable="true"]');
@@ -154,10 +148,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        if (loadingContainer && airtableData && submitButton) {
+        if (loadingContainer && mainContent) {
             loadingContainer.style.display = 'none';
-            airtableData.style.display = 'table';
-            submitButton.style.display = 'block';
+            mainContent.style.display = 'block';
         }
 
         alert('Changes submitted successfully!');

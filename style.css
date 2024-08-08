@@ -11,7 +11,7 @@ body {
 #main-content {
     display: none;
 }
-
+/* Loading Container */
 /* Loading Container */
 #loading-container {
     display: flex;
@@ -19,18 +19,23 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-color: #f4f4f9; /* Background to highlight the loading logo */
 }
 
 /* Loading Logo */
 .loading-logo {
-    filter: grayscale(100%) brightness(1.5); /* Start as a grayscale outline */
+    width: 25%; /* Logo width set to 25% of the table's width */
+    max-width: 100%; /* Ensure the logo does not exceed its container's width */
     transition: filter 0.5s ease-in-out; /* Transition to full color over half a second */
+    filter: grayscale(100%) brightness(1.5); /* Start as a grayscale outline */
+    margin: 0 auto; /* Center the logo */
 }
 
 /* Full color logo */
 .loading-logo.full-color {
     filter: grayscale(0%) brightness(1); /* Full color after transition */
 }
+
 
 /* Loading Text */
 #loading-text {
