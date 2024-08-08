@@ -68,11 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
         
         let allRecords = [];
         let offset = null;
+        let totalRecords = 0;
     
         do {
             const data = await fetchData(offset);
             allRecords = allRecords.concat(data.records);
             offset = data.offset;
+
+            // Update total record count and loading bar
+            totalRecords += data.records.length;
+            const progress = Math.min((allRecords.length / totalRecords) * 100, 100);
+
         } while (offset);
     
         // Sort records alphabetically by Branch

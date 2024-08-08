@@ -172,6 +172,37 @@ button:hover {
     animation: pulse 1.5s infinite;
 }
 
+#loading-indicator {
+    position: fixed; /* Make it stay in place */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center it horizontally and vertically */
+    font-size: 24px; /* Increase the font size */
+    color: #fff; /* Set the text color to white */
+    background-color: rgba(0, 51, 102, 0.9); /* Add a semi-transparent dark blue background */
+    padding: 20px 40px; /* Add padding around the text */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+    z-index: 1000; /* Make sure it's on top of other elements */
+    text-align: center; /* Center the text */
+}
+
+#loading-bar-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#loading-bar {
+    height: 20px;
+    width: 0;
+    background-color: #76c7c0;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+
 /* Pulse Animation */
 @keyframes pulse {
     0% {
