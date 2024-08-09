@@ -24,9 +24,9 @@ body {
 
 /* Loading Logo */
 .loading-logo {
-    width: 25%; /* Logo width set to 25% of the table's width */
+    width: 15%; /* Logo width set to 25% of the table's width */
     max-width: 100%; /* Ensure the logo does not exceed its container's width */
-    transition: filter 0.5s ease-in-out; /* Transition to full color over half a second */
+    transition: filter 0.2s ease-in-out; /* Transition to full color over half a second */
     filter: grayscale(100%) brightness(1.5); /* Start as a grayscale outline */
     margin: 0 auto; /* Center the logo */
 }
@@ -35,6 +35,30 @@ body {
 .loading-logo.full-color {
     filter: grayscale(0%) brightness(1); /* Full color after transition */
 }
+
+#toast {
+    visibility: hidden;
+    min-width: 15%;
+    max-height: 5%; /* Set maximum height to 5% of the viewport */
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the text within the toast */
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Adjust for both top and left */
+    font-size: 17px;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s; /* Smooth fade-in and fade-out */
+    box-sizing: border-box; /* Ensure padding is included within the height */
+}
+
 
 
 /* Loading Text */
@@ -58,6 +82,7 @@ body {
 .logo {
     height: 100px;
     margin-right: 20px;
+    cursor: default;
 }
 
 h1 {
@@ -175,9 +200,27 @@ button:hover {
 /* Submit Button */
 #submit-button {
     position: sticky;
-    bottom: 10px;
-    margin-bottom: 10px;
+    bottom: 20px;
+    margin-bottom: 20px;
+    background-color: #003366; /* Default background color */
+    color: white; /* Default text color */
+    border: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
+
+#submit-button:hover {
+    background-color: navy; /* Background color on hover */
+    color: white;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    border: black;
+    border-radius: 5px;
+
+}
+
 
 /* Media Queries */
 

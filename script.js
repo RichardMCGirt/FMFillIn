@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Apply the full-color class after a delay to simulate a loading bar
     setTimeout(() => {
         loadingLogo.classList.add('full-color');
-    }, 2); // 500ms delay
+    }, 150); // 500ms delay
 
     async function fetchData(offset = null) {
         let url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}?filterByFormula=Status='Pending'`;
@@ -130,12 +130,26 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
     }
 
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerHTML = message;
+        toast.style.visibility = "visible";
+        toast.style.opacity = "1"; // Fade in
+    
+        setTimeout(() => {
+            toast.style.opacity = "0"; // Fade out
+            setTimeout(() => {
+                toast.style.visibility = "hidden";
+            }, 500); // Ensure it's hidden after fading out
+        }, 3000); // Hide after 3 seconds
+    }
+    
     document.getElementById('submit-button').addEventListener('click', async () => {
         if (loadingContainer && mainContent) {
             loadingContainer.style.display = 'block';
             mainContent.style.display = 'none';
         }
-
+    
         const tbody = document.getElementById('airtable-data').querySelector('tbody');
         const rows = tbody.querySelectorAll('tr');
         for (const row of rows) {
@@ -147,14 +161,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 materialsNeededCell.classList.remove('edited');
             }
         }
-
+    
         if (loadingContainer && mainContent) {
             loadingContainer.style.display = 'none';
             mainContent.style.display = 'block';
         }
-
-        alert('Changes submitted successfully!');
+    
+        // Show toast notification
+        showToast('Changes submitted successfully!');
     });
+    
+    
 
     document.getElementById('search-input').addEventListener('input', function () {
         const searchValue = this.value.toLowerCase();
