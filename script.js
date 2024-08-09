@@ -7,11 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadingContainer = document.getElementById('loading-container');
     const mainContent = document.getElementById('main-content');
 
-    // Apply the full-color class after a delay to simulate a loading bar
-    setTimeout(() => {
-        loadingLogo.classList.add('full-color');
-    }, 50); // 500ms delay
-
     async function fetchData(offset = null) {
         let url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}?filterByFormula=Status='Pending'`;
         if (offset) {
@@ -86,30 +81,39 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        let allRecords = [];
-        let offset = null;
+        // Show the greyscale logo for 1 second
+        setTimeout(() => {
+            // Transition to full color over 2 seconds
+            loadingLogo.classList.add('full-color');
+        }, 1000); // Delay before transitioning to full color
 
-        do {
-            const data = await fetchData(offset);
-            allRecords = allRecords.concat(data.records);
-            offset = data.offset;
-        } while (offset);
+        // After the transition completes, wait 1 second in full color before displaying the content
+        setTimeout(async () => {
+            let allRecords = [];
+            let offset = null;
 
-        // Sort records alphabetically by Branch
-        allRecords.sort((a, b) => {
-            const branchA = (a.fields['VanirOffice'] || '').toLowerCase();
-            const branchB = (b.fields['VanirOffice'] || '').toLowerCase();
-            if (branchA < branchB) return -1;
-            if (branchA > branchB) return 1;
-            return 0;
-        });
+            do {
+                const data = await fetchData(offset);
+                allRecords = allRecords.concat(data.records);
+                offset = data.offset;
+            } while (offset);
 
-        await displayData(allRecords);
+            // Sort records alphabetically by Branch
+            allRecords.sort((a, b) => {
+                const branchA = (a.fields['VanirOffice'] || '').toLowerCase();
+                const branchB = (b.fields['VanirOffice'] || '').toLowerCase();
+                if (branchA < branchB) return -1;
+                if (branchA > branchB) return 1;
+                return 0;
+            });
 
-        if (loadingContainer && mainContent) {
-            loadingContainer.style.display = 'none';
-            mainContent.style.display = 'block';
-        }
+            await displayData(allRecords);
+
+            if (loadingContainer && mainContent) {
+                loadingContainer.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        }, 1500); // 1 second in full color after the transition (2 seconds for transition + 1 second delay)
     }
 
     async function updateRecord(id, fields) {
