@@ -20,8 +20,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f4f4f9; /* Background to highlight the loading logo */
+    background: radial-gradient(circle at center, #003366, #006666, #8B0000); /* Use the same gradient background */
 }
+
 
 /* Loading Logo */
 .loading-logo {
@@ -87,9 +88,15 @@ body {
 }
 
 h1 {
-    color: #003366;
+    color: darkred;
     cursor: default;
+    text-shadow: 
+    1px 1px 0 black,   /* right and down */
+    -1px -1px 0 black, /* left and up */
+    -1px 1px 0 black,  /* left and down */
+    1px -1px 0 black;  /* right and up */
 }
+
 
 /* Search Input */
 #search-input {
@@ -98,7 +105,6 @@ h1 {
     padding: 10px;
     width: 80%;
     max-width: 500px;
-    border: 1px solid #003366;
     border-radius: 5px;
     font-size: 16px;
     cursor: text; /* Text cursor in the search input */
