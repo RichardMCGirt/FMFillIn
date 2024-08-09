@@ -1,7 +1,8 @@
 /* General Reset */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background: radial-gradient(circle at center, #003366, #006666, #8B0000); /* Gradient from dark blue at the center, transitioning to teal, and then to deep red */
+
     color: #333;
     margin: 0;
     padding: 0;
@@ -40,7 +41,7 @@ body {
     visibility: hidden;
     min-width: 15%;
     max-height: 5%; /* Set maximum height to 5% of the viewport */
-    background-color: black;
+    background-color: navy;
     color: #fff;
     text-align: center;
     display: flex;
@@ -87,6 +88,7 @@ body {
 
 h1 {
     color: #003366;
+    cursor: default;
 }
 
 /* Search Input */
@@ -100,8 +102,11 @@ h1 {
     border-radius: 5px;
     font-size: 16px;
     cursor: text; /* Text cursor in the search input */
+    border: 2px solid #8B0000; /* Add a 3px solid border in deep red around the table */
+
 }
 
+/* Table Styles */
 /* Table Styles */
 table {
     width: 90%;
@@ -110,7 +115,11 @@ table {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: default; /* Default cursor over table */
+    border: 3px solid #8B0000; /* Add a 3px solid border in deep red around the table */
 }
+
+/* Other styles remain the same */
+
 
 th, td {
     border: 1px solid #ddd;
@@ -123,7 +132,11 @@ th {
     color: white;
     text-align: center;
     white-space: nowrap;
+    font-weight: bold; /* Makes the text bold */
+    font-size: 19px;
 }
+
+
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
