@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Apply the full-color class after a delay to simulate a loading bar
     setTimeout(() => {
         loadingLogo.classList.add('full-color');
-    }, 130); // 500ms delay
+    }, 50); // 500ms delay
 
     async function fetchData(offset = null) {
         let url = `https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}?filterByFormula=Status='Pending'`;
