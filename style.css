@@ -91,10 +91,10 @@ h1 {
     color: darkred;
     cursor: default;
     text-shadow: 
-    1px 1px 0 black,   /* right and down */
-    -1px -1px 0 black, /* left and up */
-    -1px 1px 0 black,  /* left and down */
-    1px -1px 0 black;  /* right and up */
+    1px 1px 0 white,   /* right and down */
+    -1px -1px 0 white, /* left and up */
+    -1px 1px 0 white,  /* left and down */
+    1px -1px 0 white;  /* right and up */
 }
 
 
